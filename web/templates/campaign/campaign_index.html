@@ -1,0 +1,49 @@
+{{ define "content" }}
+<div class="row mb-3">
+    <div class="col-12">
+        <div class="d-flex justify-content-between">
+            <h2>Campaigns</h2>
+            <div>
+                <a href="/campaigns/create" class="btn btn-sm btn-primary">Add Campaign</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">Short Desc</th>
+                        <th scope="col">Goal Amount</th>
+                        <th scope="col">Handle</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{ range .campaigns }}
+                    <tr>
+                        <th scope="row">
+                            {{ if .CampaignImages }}
+                            <img class="img-fluid img-thumbnail" src="{{ (index .CampaignImages 0).Image }}" width="90"/>
+                            {{ end }}
+                        </th>
+                        <td>{{ .Title }}</td>
+                        <td>{{ .ShortDesc }}</td>
+                        <td>{{ .GoalAmountFormatIDR }}</td>
+                        <td>
+                            <a href="/campaigns/edit/{{ .Id }}" class="btn btn-sm btn-warning">Edit</a>
+                            <a href="/campaigns/image/{{ .Id }}" class="btn btn-sm btn-success">Image</a>
+                            <a href="/campaigns/show/{{ .Id }}" class="btn btn-sm btn-info">Detail</a>
+                        </td>
+                    </tr>
+                    {{ end }}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{{ end }}

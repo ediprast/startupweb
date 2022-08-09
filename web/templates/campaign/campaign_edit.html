@@ -1,0 +1,47 @@
+{{ define "content" }}
+<div class="row mb-3">
+    <div class="col-12">
+        <h2> Edit Campaign</h2>
+    </div>
+</div>
+
+{{ if .Error }}
+<div class="row">
+    <div class="col-12">
+        {{ range .Error }}
+        <div class="alert alert-danger" role="alert">
+            {{ .Error }}
+        </div>
+        {{ end }}
+    </div>
+</div>
+{{ end }}
+
+<div class="row">
+    <div class="col-12">
+        <form action="/campaigns/update/{{ .Id }}" method="POST">
+            <div class="mb-3">
+                <label for="title" class="form-label">Title</label>
+                <input type="text" class="form-control" id="title" name="title" placeholder="enter title" value="{{ .Title }}">
+            </div>
+            <div class="mb-3">
+                <label for="short_description" class="form-label">Short Description</label>
+                <input type="text" class="form-control" id="short_description" name="short_description" placeholder="enter short description" value="{{ .ShortDescription }}">
+            </div>
+            <div class="mb-3">
+                <label for="description" class="form-label">Description</label>
+                <textarea class="form-control" id="description" name="description" placeholder="enter description" rows="8">{{ .Description }}</textarea>
+            </div>
+            <div class="mb-3">
+                <label for="goal_amount" class="form-label">Goal Amount</label>
+                <input type="number" class="form-control" id="goal_amount" name="goal_amount" value="{{ .GoalAmount }}">
+            </div>
+            <div class="mb-3">
+                <label for="perks" class="form-label">Perks</label>
+                <input type="text" class="form-control" id="perks" name="perks" placeholder="enter perks (comma separated)" value="{{ .Perks }}">
+            </div>
+            <button type="submit" class="btn btn-primary">Update Now</button>
+          </form>
+    </div>
+</div>
+{{ end }}

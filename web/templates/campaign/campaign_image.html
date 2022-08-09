@@ -1,0 +1,32 @@
+{{ define "content" }}
+<div class="row mb-3">
+    <div class="col-12">
+        <h2> Upload Campaign Image</h2>
+    </div>
+</div>
+
+{{ if .Error }}
+<div class="row">
+    <div class="col-12">
+        {{ range .Error }}
+        <div class="alert alert-danger" role="alert">
+            {{ .Error }}
+        </div>
+        {{ end }}
+    </div>
+</div>
+{{ end }}
+
+<div class="row">
+    <div class="col-12">
+        <form action="/campaigns/image/{{ .Id }}" method="POST" enctype="multipart/form-data">
+            <div class="mb-3">
+                <label for="file" class="form-label">Campaign Image</label>
+                <input type="file" class="form-control" id="file" name="file">
+            </div>
+            
+            <button type="submit" class="btn btn-primary">Upload Now</button>
+          </form>
+    </div>
+</div>
+{{ end }}

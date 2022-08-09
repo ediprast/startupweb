@@ -1,0 +1,37 @@
+{{ define "content" }}
+<div class="row mb-3">
+    <div class="col-12">
+        <div class="d-flex justify-content-between">
+            <h2>Transactions</h2>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Campaign Title</th>
+                        <th scope="col">Amount</th>
+                        <th scope="col">Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{ range .transactions }}
+                    <tr>
+                        <th scope="row">
+                        </th>
+                        <td>{{ .Campaign.Title }}</td>
+                        <td>{{ .AmountFormatIDR }}</td>
+                        <td>{{ .Status }}</td>
+                    </tr>
+                    {{ end }}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{{ end }}

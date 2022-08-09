@@ -1,0 +1,42 @@
+{{ define "content" }}
+<div class="row mb-3">
+    <div class="col-12">
+        <h2> Show Campaign</h2>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <form>
+            <div class="mb-3">
+                <label for="title" class="form-label">Title</label>
+                <input type="text" class="form-control" id="title" name="title" value="{{ .Title }}" disabled>
+            </div>
+            <div class="mb-3">
+                <label for="short_description" class="form-label">Short Description</label>
+                <input type="text" class="form-control" id="short_description" name="short_description" value="{{ .ShortDesc }}" disabled>
+            </div>
+            <div class="mb-3">
+                <label for="description" class="form-label">Description</label>
+                <textarea class="form-control" id="description" name="description" rows="8" disabled>{{ .Description }}</textarea>
+            </div>
+            <div class="mb-3">
+                <label for="goal_amount" class="form-label">Goal Amount</label>
+                <input type="text" class="form-control" id="goal_amount" name="goal_amount" value="{{ .GoalAmountFormatIDR }}" disabled>
+            </div>
+            <div class="mb-3">
+                <label for="perks" class="form-label">Perks</label>
+                <input type="text" class="form-control" id="perks" name="perks" value="{{ .Perks }}" disabled>
+            </div>
+            <div class="mb-3">
+                <label for="backer_count" class="form-label">Backer Count</label>
+                <input type="text" class="form-control" id="backer_count" name="backer_count" value="{{ .BackerCount }}" disabled>
+            </div>
+            <div class="mb-3">
+                <label for="current_amount" class="form-label">Current Amount</label>
+                <input type="text" class="form-control" id="current_amount" name="current_amount" value="{{ .CurrentAmountFormatIDR }}" disabled>
+            </div>
+          </form>
+    </div>
+</div>
+{{ end }}

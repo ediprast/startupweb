@@ -1,0 +1,46 @@
+{{ define "content" }}
+<div class="row mb-3">
+    <div class="col-12">
+        <div class="d-flex justify-content-between">
+            <h2>Users</h2>
+            <div>
+                <a href="/users/create" class="btn btn-sm btn-primary">Add User</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Occupation</th>
+                        <th scope="col">Handle</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{ range .users }}
+                    <tr>
+                        <th scope="row">
+                            <img class="img-fluid img-thumbnail" src="{{ .Avatar }}" width="90"/>
+                        </th>
+                        <td>{{ .Name }}</td>
+                        <td>{{ .Email }}</td>
+                        <td>{{ .Occupation }}</td>
+                        <td>
+                            <a href="/users/edit/{{ .Id }}" class="btn btn-sm btn-warning">Edit</a>
+                            <a href="/users/avatar/{{ .Id }}" class="btn btn-sm btn-success">Avatar</a>
+                        </td>
+                    </tr>
+                    {{ end }}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{{ end }}

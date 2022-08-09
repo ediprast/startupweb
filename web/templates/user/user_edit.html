@@ -1,0 +1,41 @@
+{{ define "content" }}
+<div class="row mb-3">
+    <div class="col-12">
+        <h2> Edit User</h2>
+    </div>
+</div>
+
+{{ if .Error }}
+<div class="row">
+    <div class="col-12">
+        {{ range .Error }}
+        <div class="alert alert-danger" role="alert">
+            {{ .Error }}
+        </div>
+        {{ end }}
+    </div>
+</div>
+{{ end }}
+
+<div class="row">
+    <div class="col-12">
+        <form action="/users/update/{{ .Id }}" method="POST">
+            <div class="mb-3">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" class="form-control" id="name" name="name" placeholder="enter name" value="{{ .Name }}">
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Email address</label>
+              <input type="email" class="form-control" id="email" name="email" placeholder="enter email" value="{{ .Email }}" aria-describedby="emailHelp">
+              <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+            </div>
+            <div class="mb-3">
+                <label for="occupation" class="form-label">Occupation</label>
+                <input type="text" class="form-control" id="occupation" name="occupation" placeholder="enter occupation" value="{{ .Occupation }}">
+            </div>
+            
+            <button type="submit" class="btn btn-primary">Update Now</button>
+          </form>
+    </div>
+</div>
+{{ end }}
